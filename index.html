@@ -497,7 +497,7 @@
                     <div class="has-text-centered mb-5">
                         <h3 class="title is-4">Experiment 3: Straight Trotting with Payload</h3>
                         <p class="has-text-justified is-size-6 mb-4">
-                            Straight trotting with a 6 kg payload. The robot follows a sequence of commanded velocities: \( ^B v_x = 0.8 \, m/s \) for 10 s, \( ^B v_y = 0.5 \, m/s \) for 5 s, and \( ^B v_x = -0.5 \, m/s \) for 5 s.
+                            Straight trotting with a 6 kg payload. The robot follows a sequence of commanded velocities: ^B v_x = 0.8 m/s for 10 s, ^B v_y = 0.5 m/s for 5 s, and ^B v_x = -0.5 m/s for 5 s.
                         </p>
                     </div>
 
@@ -550,7 +550,7 @@
                     <div class="has-text-centered mb-5">
                         <h3 class="title is-4">Experiment 4: Circular Trotting with Payload</h3>
                         <p class="has-text-justified is-size-6 mb-4">
-                            Circular trotting with a 6 kg payload, where commanded velocities are \( ^B v_x = 0.3 \, m/s \) and \( ^B \omega_z = 0.5 \, rad/s \).
+                            Circular trotting with a 6 kg payload, where commanded velocities are ^B v_x = 0.3 m/s and ^B \omega_z = 0.5 rad/s.
                         </p>
                     </div>
 
@@ -612,7 +612,7 @@
                     <div class="has-text-centered mb-5">
                         <h3 class="title is-4">Simulation 1: Severe Asymmetric Payload</h3>
                         <p class="has-text-justified is-size-6 mb-4">
-                            A 10 kg payload was attached to the base, with its CoM laterally shifted by 0.1 m to the right relative to the base.
+                            A 10 kg payload was attached to the base, with its CoM laterally shifted by 0.1 m to the right relative to the base, where commanded velocities are ^B v_x = 0.5 m/s and ^B \omega_z = 0.6 rad/s.
                         </p>
                     </div>
 
@@ -665,7 +665,7 @@
                     <div class="has-text-centered mb-5">
                         <h3 class="title is-4">Simulation 2: High-Inertia Legs</h3>
                         <p class="has-text-justified is-size-6 mb-4">
-                            A 1.5 kg object was attached to the outer side of each thigh link, significantly increasing the leg inertia.
+                            A 1.5 kg object was attached to the outer side of each thigh link, significantly increasing the leg inertia, where commanded velocities are ^B v_x = 0.5 m/s and ^B \omega_z = 0.6 rad/s.
                         </p>
                     </div>
 
@@ -710,6 +710,100 @@
             </div>
         </section>
         <!-- End Simulation 2 -->
+        <!-- 定量分析结果 -->
+        <section class="section hero is-light">
+            <div class="container is-max-desktop">
+                <div class="has-text-centered mb-6">
+                    <h2 class="title is-3">Quantitative Results</h2>
+                    <p class="subtitle is-5">
+                        Table II: Quantitative comparison between the baseline (Base.) and proposed (Prop.) controllers, with Improv. being percentage of improvement.
+                    </p>
+                </div>
+
+                <!-- 表格主体 -->
+                <div class="table-container">
+                    <table class="table is-fullwidth is-bordered is-striped is-hoverable has-text-centered">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Metric</th>
+                                <th>Base.</th>
+                                <th>Prop.</th>
+                                <th>Improv.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Payload 任务 -->
+                            <tr>
+                                <td rowspan="2"><strong>Payload</strong></td>
+                                <td>Height RMSE (m)</td>
+                                <td>0.0317</td>
+                                <td>0.0036</td>
+                                <td>88.77%</td>
+                            </tr>
+                            <tr>
+                                <td>Peak pitch (rad)</td>
+                                <td>0.1034</td>
+                                <td>0.0234</td>
+                                <td>77.39%</td>
+                            </tr>
+
+                            <!-- Pulling 任务 -->
+                            <tr>
+                                <td rowspan="2"><strong>Pulling</strong></td>
+                                <td>Final $x$-offset (m)</td>
+                                <td>0.1000</td>
+                                <td>0.0041</td>
+                                <td>95.90%</td>
+                            </tr>
+                            <tr>
+                                <td>Peak pitch (rad)</td>
+                                <td>0.0834</td>
+                                <td>0.0293</td>
+                                <td>64.90%</td>
+                            </tr>
+
+                            <!-- Straight trot 任务 -->
+                            <tr>
+                                <td rowspan="2"><strong>Straight trot</strong></td>
+                                <td>Height RMSE (m)</td>
+                                <td>0.0924</td>
+                                <td>0.0093 (0.0057)</td>
+                                <td>89.90%</td>
+                            </tr>
+                            <tr>
+                                <td>Planar error (m)</td>
+                                <td>0.0298</td>
+                                <td>0.0213</td>
+                                <td>28.49%</td>
+                            </tr>
+
+                            <!-- Circular trot 任务 -->
+                            <tr>
+                                <td rowspan="3"><strong>Circular trot</strong></td>
+                                <td>Height RMSE (m)</td>
+                                <td>0.0947</td>
+                                <td>0.0135 (0.0089)</td>
+                                <td>85.74%</td>
+                            </tr>
+                            <tr>
+                                <td>Roll RMSE (rad)</td>
+                                <td>0.2014</td>
+                                <td>0.0424</td>
+                                <td>78.93%</td>
+                            </tr>
+                            <tr>
+                                <td>Planar error (m)</td>
+                                <td>0.0567</td>
+                                <td>0.0273</td>
+                                <td>51.73%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <!-- 结束表格 -->
         <!-- Image carousel -->
         <section class="hero is-small">
             <div class="hero-body">
